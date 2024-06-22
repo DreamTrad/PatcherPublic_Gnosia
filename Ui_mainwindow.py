@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-# Form implementation generated from reading ui file 'f:\Documents\Programmation\PublicProject\patcher_999_PC_official\mainwindow.ui'
+# Form implementation generated from reading ui file 'f:\Documents\Programmation\PublicProject\patcher_Gnosia_PC_official\mainwindow.ui'
 #
 # Created by: PyQt5 UI code generator 5.15.9
 #
@@ -14,147 +14,26 @@ from PyQt5 import QtCore, QtGui, QtWidgets
 class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
         MainWindow.setObjectName("MainWindow")
-        MainWindow.resize(960, 544)
-        icon = QtGui.QIcon()
-        icon.addPixmap(QtGui.QPixmap(":/ressource/DreamteamLogo.ico"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
-        MainWindow.setWindowIcon(icon)
-        MainWindow.setStyleSheet("QMainWindow#MainWindow {\n"
-"    background-image: url(:/ressource/0000ae52.png);\n"
-"    background-repeat: no-repeat;\n"
-"    background-position: center;\n"
-"    bbackground-size: cover;\n"
-"    background-position: center;\n"
-"    border: none;\n"
-"}")
+        MainWindow.resize(916, 104)
+        MainWindow.setStyleSheet("")
         self.centralwidget = QtWidgets.QWidget(MainWindow)
-        self.centralwidget.setStyleSheet("QWidget#centralwidget {\n"
-"                background-image: url(:/ressource/0000ae52.png);\n"
-"            }")
+        self.centralwidget.setStyleSheet("")
         self.centralwidget.setObjectName("centralwidget")
         self.pushButton_browse = QtWidgets.QPushButton(self.centralwidget)
-        self.pushButton_browse.setGeometry(QtCore.QRect(690, -20, 305, 111))
-        self.pushButton_browse.setStyleSheet("QPushButton#pushButton_browse {\n"
-"    background-image: url(:/ressource/0000003e.png);\n"
-"}\n"
-"QPushButton#pushButton_browse:hover {\n"
-"    background-image: url(:/ressource/0000003b.png);\n"
-"}\n"
-"QPushButton#pushButton_browse:pressed {\n"
-"    background-image: url(:/ressource/0000005b.png);\n"
-"}\n"
-"QPushButton {\n"
-"background: transparent;\n"
-"}")
-        self.pushButton_browse.setText("")
+        self.pushButton_browse.setGeometry(QtCore.QRect(830, 10, 81, 31))
+        self.pushButton_browse.setLayoutDirection(QtCore.Qt.RightToLeft)
         self.pushButton_browse.setObjectName("pushButton_browse")
         self.pushButton_process = QtWidgets.QPushButton(self.centralwidget)
-        self.pushButton_process.setGeometry(QtCore.QRect(560, 350, 371, 61))
+        self.pushButton_process.setGeometry(QtCore.QRect(420, 60, 61, 31))
         self.pushButton_process.setMaximumSize(QtCore.QSize(16777215, 16777211))
-        self.pushButton_process.setAutoFillBackground(False)
-        self.pushButton_process.setStyleSheet("QPushButton#pushButton_process {\n"
-"    background-image: url(:/ressource/00005ae7.png);\n"
-"}\n"
-"QPushButton#pushButton_process:hover {\n"
-"    background-image: url(:/ressource/00005b09.png);\n"
-"}\n"
-"QPushButton#pushButton_process:pressed {\n"
-"    background-image: url(:/ressource/00005ae5.png);\n"
-"}\n"
-"QPushButton {\n"
-"background: transparent;\n"
-"}")
         self.pushButton_process.setObjectName("pushButton_process")
         self.lineEdit_gamePath = QtWidgets.QLineEdit(self.centralwidget)
-        self.lineEdit_gamePath.setGeometry(QtCore.QRect(40, 110, 851, 71))
-        font = QtGui.QFont()
-        font.setPointSize(12)
-        font.setBold(True)
-        font.setWeight(75)
-        self.lineEdit_gamePath.setFont(font)
-        self.lineEdit_gamePath.setStyleSheet("QLineEdit#lineEdit_gamePath {\n"
-"    background-image: url(:/ressource/00000069.png);\n"
-"    background-repeat: no-repeat;\n"
-"    background-position: center;\n"
-"    background-size: contain;\n"
-"    color: white;\n"
-"    font-weight: bold;\n"
-"    background-position: center;\n"
-"    border: none;\n"
-"}\n"
-"QLineEdit {\n"
-"background: transparent;\n"
-"}")
+        self.lineEdit_gamePath.setGeometry(QtCore.QRect(10, 10, 811, 31))
         self.lineEdit_gamePath.setAlignment(QtCore.Qt.AlignCenter)
         self.lineEdit_gamePath.setObjectName("lineEdit_gamePath")
-        self.label_noGameFound = QtWidgets.QLabel(self.centralwidget)
-        self.label_noGameFound.setGeometry(QtCore.QRect(0, 0, 701, 31))
-        font = QtGui.QFont()
-        font.setPointSize(12)
-        font.setBold(True)
-        font.setWeight(75)
-        self.label_noGameFound.setFont(font)
-        self.label_noGameFound.setStyleSheet("QLabel#label_noGameFound {\n"
-"    color: white;\n"
-"    font-weight: bold;\n"
-"}")
-        self.label_noGameFound.setAlignment(QtCore.Qt.AlignCenter)
-        self.label_noGameFound.setObjectName("label_noGameFound")
         self.label_stateProcess = QtWidgets.QLabel(self.centralwidget)
-        self.label_stateProcess.setGeometry(QtCore.QRect(630, 330, 241, 21))
-        font = QtGui.QFont()
-        font.setPointSize(12)
-        font.setBold(True)
-        font.setWeight(75)
-        self.label_stateProcess.setFont(font)
-        self.label_stateProcess.setStyleSheet("QLabel#label_stateProcess {\n"
-"    color: white;\n"
-"    font-weight: bold;\n"
-"}")
-        self.label_stateProcess.setAlignment(QtCore.Qt.AlignCenter)
+        self.label_stateProcess.setGeometry(QtCore.QRect(500, 60, 211, 31))
         self.label_stateProcess.setObjectName("label_stateProcess")
-        self.image999 = QtWidgets.QLabel(self.centralwidget)
-        self.image999.setGeometry(QtCore.QRect(0, 390, 381, 151))
-        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Preferred, QtWidgets.QSizePolicy.Preferred)
-        sizePolicy.setHorizontalStretch(0)
-        sizePolicy.setVerticalStretch(0)
-        sizePolicy.setHeightForWidth(self.image999.sizePolicy().hasHeightForWidth())
-        self.image999.setSizePolicy(sizePolicy)
-        self.image999.setStyleSheet("QLabel#image999 {\n"
-"    background-repeat: no-repeat;\n"
-"    background-position: center;\n"
-"    background-size: contain;\n"
-"    background-position: center;\n"
-"    border: none;\n"
-"}")
-        self.image999.setText("")
-        self.image999.setPixmap(QtGui.QPixmap(":/ressource/00005af1.png"))
-        self.image999.setScaledContents(True)
-        self.image999.setObjectName("image999")
-        self.texEdit_steamReset = QtWidgets.QTextEdit(self.centralwidget)
-        self.texEdit_steamReset.setGeometry(QtCore.QRect(530, 440, 411, 141))
-        self.texEdit_steamReset.setStyleSheet("QTextEdit#texEdit_steamReset{\n"
-"    background-color: transparent;\n"
-"    color: white;\n"
-"    font-weight: bold;\n"
-"}")
-        self.texEdit_steamReset.setFrameShape(QtWidgets.QFrame.NoFrame)
-        self.texEdit_steamReset.setFrameShadow(QtWidgets.QFrame.Plain)
-        self.texEdit_steamReset.setReadOnly(True)
-        self.texEdit_steamReset.setTextInteractionFlags(QtCore.Qt.NoTextInteraction)
-        self.texEdit_steamReset.setObjectName("texEdit_steamReset")
-        self.label_stateProcess_2 = QtWidgets.QLabel(self.centralwidget)
-        self.label_stateProcess_2.setGeometry(QtCore.QRect(630, 310, 241, 21))
-        font = QtGui.QFont()
-        font.setPointSize(12)
-        font.setBold(True)
-        font.setWeight(75)
-        self.label_stateProcess_2.setFont(font)
-        self.label_stateProcess_2.setStyleSheet("QLabel#label_stateProcess_2 {\n"
-"    color: white;\n"
-"    font-weight: bold;\n"
-"}")
-        self.label_stateProcess_2.setAlignment(QtCore.Qt.AlignCenter)
-        self.label_stateProcess_2.setObjectName("label_stateProcess_2")
         MainWindow.setCentralWidget(self.centralwidget)
 
         self.retranslateUi(MainWindow)
@@ -162,16 +41,8 @@ class Ui_MainWindow(object):
 
     def retranslateUi(self, MainWindow):
         _translate = QtCore.QCoreApplication.translate
-        MainWindow.setWindowTitle(_translate("MainWindow", "DreamTeamTrad - Patch Auto Zero Escape: The Nonary Games (999)"))
-        self.label_noGameFound.setText(_translate("MainWindow", "Si le dossier du jeu n\'a pas été trouvé, veuillez l\'indiquer via le bouton \"Inspecter\""))
-        self.label_stateProcess.setText(_translate("MainWindow", "application du patch en cours"))
-        self.texEdit_steamReset.setHtml(_translate("MainWindow", "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
-"<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
-"p, li { white-space: pre-wrap; }\n"
-"</style></head><body style=\" font-family:\'MS Shell Dlg 2\'; font-size:8.25pt; font-weight:600; font-style:normal;\">\n"
-"<p align=\"justify\" style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:12pt; color:#ffffff;\">Assurez-vous d\'avoir les fichiers d\'origine du jeu.</span></p>\n"
-"<p align=\"justify\" style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:12pt; color:#ffffff;\">Pour rétablir les fichiers d\'origine si besoin :</span></p>\n"
-"<p align=\"justify\" style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:12pt; color:#ffffff;\">Icône d\'engrenage du jeu sur steam -&gt;</span></p>\n"
-"<p align=\"justify\" style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:12pt; color:#ffffff;\">Propriétés -&gt; Fichiers installés -&gt; Vérifier l\'intégrité des fichiers du jeu</span></p></body></html>"))
-        self.label_stateProcess_2.setText(_translate("MainWindow", "ça prend 1 minute ou 2"))
+        MainWindow.setWindowTitle(_translate("MainWindow", "Team Mirai - GNOSIA patcheur automatique"))
+        self.pushButton_browse.setText(_translate("MainWindow", "rechercher"))
+        self.pushButton_process.setText(_translate("MainWindow", "Patcher"))
+        self.label_stateProcess.setText(_translate("MainWindow", "text current state patch"))
 import ressource_rc

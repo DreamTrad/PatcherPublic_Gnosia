@@ -6,67 +6,43 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>960</width>
-    <height>544</height>
+    <width>916</width>
+    <height>104</height>
    </rect>
   </property>
   <property name="windowTitle">
-   <string>DreamTeamTrad - Patch Auto Zero Escape: The Nonary Games (999)</string>
-  </property>
-  <property name="windowIcon">
-   <iconset resource="ressource.qrc">
-    <normaloff>:/ressource/DreamteamLogo.ico</normaloff>:/ressource/DreamteamLogo.ico</iconset>
+   <string>Team Mirai - GNOSIA patcheur automatique</string>
   </property>
   <property name="styleSheet">
-   <string notr="true">QMainWindow#MainWindow {
-    background-image: url(:/ressource/0000ae52.png);
-	background-repeat: no-repeat;
-    background-position: center;
-	bbackground-size: cover;
-	background-position: center;
-	border: none;
-}</string>
+   <string notr="true"/>
   </property>
   <widget class="QWidget" name="centralwidget">
    <property name="styleSheet">
-    <string notr="true">QWidget#centralwidget {
-                background-image: url(:/ressource/0000ae52.png);
-            }</string>
+    <string notr="true"/>
    </property>
    <widget class="QPushButton" name="pushButton_browse">
     <property name="geometry">
      <rect>
-      <x>690</x>
-      <y>-20</y>
-      <width>305</width>
-      <height>111</height>
+      <x>830</x>
+      <y>10</y>
+      <width>81</width>
+      <height>31</height>
      </rect>
     </property>
-    <property name="styleSheet">
-     <string notr="true">QPushButton#pushButton_browse {
-	background-image: url(:/ressource/0000003e.png);
-}
-QPushButton#pushButton_browse:hover {
-	background-image: url(:/ressource/0000003b.png);
-}
-QPushButton#pushButton_browse:pressed {
-	background-image: url(:/ressource/0000005b.png);
-}
-QPushButton {
-background: transparent;
-}</string>
+    <property name="layoutDirection">
+     <enum>Qt::RightToLeft</enum>
     </property>
     <property name="text">
-     <string/>
+     <string>rechercher</string>
     </property>
    </widget>
    <widget class="QPushButton" name="pushButton_process">
     <property name="geometry">
      <rect>
-      <x>560</x>
-      <y>350</y>
-      <width>371</width>
-      <height>61</height>
+      <x>420</x>
+      <y>60</y>
+      <width>61</width>
+      <height>31</height>
      </rect>
     </property>
     <property name="maximumSize">
@@ -75,83 +51,18 @@ background: transparent;
       <height>16777211</height>
      </size>
     </property>
-    <property name="autoFillBackground">
-     <bool>false</bool>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">QPushButton#pushButton_process {
-	background-image: url(:/ressource/00005ae7.png);
-}
-QPushButton#pushButton_process:hover {
-	background-image: url(:/ressource/00005b09.png);
-}
-QPushButton#pushButton_process:pressed {
-	background-image: url(:/ressource/00005ae5.png);
-}
-QPushButton {
-background: transparent;
-}</string>
+    <property name="text">
+     <string>Patcher</string>
     </property>
    </widget>
    <widget class="QLineEdit" name="lineEdit_gamePath">
     <property name="geometry">
      <rect>
-      <x>40</x>
-      <y>110</y>
-      <width>851</width>
-      <height>71</height>
-     </rect>
-    </property>
-    <property name="font">
-     <font>
-      <pointsize>12</pointsize>
-      <weight>75</weight>
-      <bold>true</bold>
-     </font>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">QLineEdit#lineEdit_gamePath {
-	background-image: url(:/ressource/00000069.png);
-	background-repeat: no-repeat;
-    background-position: center;
-	background-size: contain;
-	color: white;
-	font-weight: bold;
-	background-position: center;
-	border: none;
-}
-QLineEdit {
-background: transparent;
-}</string>
-    </property>
-    <property name="alignment">
-     <set>Qt::AlignCenter</set>
-    </property>
-   </widget>
-   <widget class="QLabel" name="label_noGameFound">
-    <property name="geometry">
-     <rect>
-      <x>0</x>
-      <y>0</y>
-      <width>701</width>
+      <x>10</x>
+      <y>10</y>
+      <width>811</width>
       <height>31</height>
      </rect>
-    </property>
-    <property name="font">
-     <font>
-      <pointsize>12</pointsize>
-      <weight>75</weight>
-      <bold>true</bold>
-     </font>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">QLabel#label_noGameFound {
-	color: white;
-	font-weight: bold;
-}</string>
-    </property>
-    <property name="text">
-     <string>Si le dossier du jeu n'a pas été trouvé, veuillez l'indiquer via le bouton &quot;Inspecter&quot;</string>
     </property>
     <property name="alignment">
      <set>Qt::AlignCenter</set>
@@ -160,132 +71,14 @@ background: transparent;
    <widget class="QLabel" name="label_stateProcess">
     <property name="geometry">
      <rect>
-      <x>630</x>
-      <y>330</y>
-      <width>241</width>
-      <height>21</height>
+      <x>500</x>
+      <y>60</y>
+      <width>211</width>
+      <height>31</height>
      </rect>
-    </property>
-    <property name="font">
-     <font>
-      <pointsize>12</pointsize>
-      <weight>75</weight>
-      <bold>true</bold>
-     </font>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">QLabel#label_stateProcess {
-	color: white;
-	font-weight: bold;
-}</string>
     </property>
     <property name="text">
-     <string>application du patch en cours</string>
-    </property>
-    <property name="alignment">
-     <set>Qt::AlignCenter</set>
-    </property>
-   </widget>
-   <widget class="QLabel" name="image999">
-    <property name="geometry">
-     <rect>
-      <x>0</x>
-      <y>390</y>
-      <width>381</width>
-      <height>151</height>
-     </rect>
-    </property>
-    <property name="sizePolicy">
-     <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
-      <horstretch>0</horstretch>
-      <verstretch>0</verstretch>
-     </sizepolicy>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">QLabel#image999 {
-	background-repeat: no-repeat;
-    background-position: center;
-	background-size: contain;
-	background-position: center;
-	border: none;
-}</string>
-    </property>
-    <property name="text">
-     <string/>
-    </property>
-    <property name="pixmap">
-     <pixmap resource="ressource.qrc">:/ressource/00005af1.png</pixmap>
-    </property>
-    <property name="scaledContents">
-     <bool>true</bool>
-    </property>
-   </widget>
-   <widget class="QTextEdit" name="texEdit_steamReset">
-    <property name="geometry">
-     <rect>
-      <x>530</x>
-      <y>440</y>
-      <width>411</width>
-      <height>141</height>
-     </rect>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">QTextEdit#texEdit_steamReset{
-	background-color: transparent;
-	color: white;
-	font-weight: bold;
-}</string>
-    </property>
-    <property name="frameShape">
-     <enum>QFrame::NoFrame</enum>
-    </property>
-    <property name="frameShadow">
-     <enum>QFrame::Plain</enum>
-    </property>
-    <property name="readOnly">
-     <bool>true</bool>
-    </property>
-    <property name="html">
-     <string>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
-&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
-p, li { white-space: pre-wrap; }
-&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'MS Shell Dlg 2'; font-size:8.25pt; font-weight:600; font-style:normal;&quot;&gt;
-&lt;p align=&quot;justify&quot; style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:12pt; color:#ffffff;&quot;&gt;Assurez-vous d'avoir les fichiers d'origine du jeu.&lt;/span&gt;&lt;/p&gt;
-&lt;p align=&quot;justify&quot; style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:12pt; color:#ffffff;&quot;&gt;Pour rétablir les fichiers d'origine si besoin :&lt;/span&gt;&lt;/p&gt;
-&lt;p align=&quot;justify&quot; style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:12pt; color:#ffffff;&quot;&gt;Icône d'engrenage du jeu sur steam -&amp;gt;&lt;/span&gt;&lt;/p&gt;
-&lt;p align=&quot;justify&quot; style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:12pt; color:#ffffff;&quot;&gt;Propriétés -&amp;gt; Fichiers installés -&amp;gt; Vérifier l'intégrité des fichiers du jeu&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-    </property>
-    <property name="textInteractionFlags">
-     <set>Qt::NoTextInteraction</set>
-    </property>
-   </widget>
-   <widget class="QLabel" name="label_stateProcess_2">
-    <property name="geometry">
-     <rect>
-      <x>630</x>
-      <y>310</y>
-      <width>241</width>
-      <height>21</height>
-     </rect>
-    </property>
-    <property name="font">
-     <font>
-      <pointsize>12</pointsize>
-      <weight>75</weight>
-      <bold>true</bold>
-     </font>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">QLabel#label_stateProcess_2 {
-	color: white;
-	font-weight: bold;
-}</string>
-    </property>
-    <property name="text">
-     <string>ça prend 1 minute ou 2</string>
-    </property>
-    <property name="alignment">
-     <set>Qt::AlignCenter</set>
+     <string>text current state patch</string>
     </property>
    </widget>
   </widget>

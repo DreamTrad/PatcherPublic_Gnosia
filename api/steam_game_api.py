@@ -73,7 +73,7 @@ def find_steam_library_folders_path() -> (list[str] | int):
     return game_folders
 
 
-def find_game_path(game_folder_name) -> (str | int):
+def find_game_path(game_folder_name: str) -> (str | int):
     """find path of a steam game
 
     Args:
