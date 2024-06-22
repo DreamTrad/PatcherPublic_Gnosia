@@ -1,0 +1,14 @@
+<RCC>
+  <qresource prefix="/">
+    <file>ressource/DreamteamLogo.ico</file>
+    <file>ressource/00005ae7.png</file>
+    <file>ressource/00005b09.png</file>
+    <file>ressource/00005ae5.png</file>
+    <file>ressource/00000069.png</file>
+    <file>ressource/00005af1.png</file>
+    <file>ressource/0000003e.png</file>
+    <file>ressource/0000005b.png</file>
+    <file>ressource/0000003b.png</file>
+    <file>ressource/0000ae52.png</file>
+  </qresource>
+</RCC>
