@@ -1,6 +1,7 @@
 """functions of the UI"""
 
 import os
+import zipfile
 
 # -------------------- Import Lib Tier -------------------
 from PyQt5.QtWidgets import QMainWindow, QFileDialog
@@ -12,6 +13,7 @@ from api import steam_game_api, xdelta_api
 
 
 PATH_PATCH = ".\\patch\\"
+GAME_FOLDER_NAME = "GNOSIA"
 
 
 # -------------------------------------------------------------------#
@@ -26,23 +28,36 @@ class _Worker(QObject):
         super().__init__()
 
     def apply_patch_process(self, gamepath: str) -> None:
-        self.apply_one_patch("ze1", "exe", gamepath)
-        self.apply_one_patch("Launcher", "exe", gamepath)
-        self.apply_one_patch("ze1_data", "bin", gamepath)
-        self.signal_apply_patch_end.emit()
 
-    def apply_one_patch(self, file: str, extension: str, gamepath: str) -> None:
-        file_to_patch: str = os.path.join(gamepath, file + "." + extension)
-        file_patch: str = os.path.join(PATH_PATCH, file + "_patch.xdelta")
-        res: int = xdelta_api.apply_patch(file_to_patch, file_patch)
-        print(res)
+        def unzip_file(zip_path: str, extract_to: str) -> None:
+            if not os.path.exists(zip_path):
+                raise FileNotFoundError(f"Le fichier ZIP '{zip_path}' n'existe pas.")
+
+            if not os.path.exists(extract_to):
+                os.makedirs(extract_to)
+
+            with zipfile.ZipFile(zip_path, 'r') as zip_ref:
+                zip_ref.extractall(extract_to)
+
+        zip_file: str = ""
+        for file in os.listdir(PATH_PATCH):
+            if file.endswith('.zip'):
+                zip_file = os.path.join(PATH_PATCH, file)
+                break
+
+        if zip_file == "":
+            raise FileNotFoundError("Aucun fichier ZIP trouvé dans le dossier source.")
+
+        unzip_file(zip_file, gamepath)
+
+        self.signal_apply_patch_end.emit()
 
 
 # -------------------------------------------------------------------#
 #                         CLASS MAINWINDOW                           #
 # -------------------------------------------------------------------#
 class MainWindow(QMainWindow):
-    def __init__(self):
+    def __init__(self) -> None:
         super(MainWindow, self).__init__()
         self.ui = Ui_MainWindow()
         self.ui.setupUi(self)
@@ -65,7 +80,7 @@ class MainWindow(QMainWindow):
         self.m_worker.signal_apply_patch_end.connect(self.handle_apply_patch_result)
 
     def find_steam_game_path(self) -> None:
-        gamepath: str | int = steam_game_api.find_game_path("Zero Escape The Nonary Games")
+        gamepath: str | int = steam_game_api.find_game_path(GAME_FOLDER_NAME)
         if isinstance(gamepath, str):
             self.ui.lineEdit_gamePath.setText(gamepath)
 
