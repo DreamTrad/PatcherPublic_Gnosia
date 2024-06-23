@@ -9,8 +9,8 @@ from PyQt5.QtCore import QObject, QDir, pyqtSlot, pyqtSignal, QThread
 
 # -------------------- Import Lib User -------------------
 from Ui_mainwindow import Ui_MainWindow
-from api import steam_game_api, xdelta_api
-
+from api import steam_game_api
+import debug
 
 PATH_PATCH = ".\\patch\\"
 GAME_FOLDER_NAME = "GNOSIA"
@@ -22,35 +22,37 @@ GAME_FOLDER_NAME = "GNOSIA"
 class _Worker(QObject):
 
     signal_apply_patch = pyqtSignal(str)
-    signal_apply_patch_end = pyqtSignal()
+    signal_apply_patch_end = pyqtSignal(str)
 
     def __init__(self) -> None:
         super().__init__()
 
     def apply_patch_process(self, gamepath: str) -> None:
 
-        def unzip_file(zip_path: str, extract_to: str) -> None:
-            if not os.path.exists(zip_path):
-                raise FileNotFoundError(f"Le fichier ZIP '{zip_path}' n'existe pas.")
+        error: str = ""
 
-            if not os.path.exists(extract_to):
-                os.makedirs(extract_to)
-
+        def unzip_file(zip_path: str, extract_to: str) -> str:
             with zipfile.ZipFile(zip_path, 'r') as zip_ref:
                 zip_ref.extractall(extract_to)
+            return ""
 
         zip_file: str = ""
+        if not os.path.exists(PATH_PATCH):
+            error = 'dossier "patch" non présent'
+            self.signal_apply_patch_end.emit(error)
+            return
         for file in os.listdir(PATH_PATCH):
             if file.endswith('.zip'):
                 zip_file = os.path.join(PATH_PATCH, file)
                 break
 
         if zip_file == "":
-            raise FileNotFoundError("Aucun fichier ZIP trouvé dans le dossier source.")
+            debug.logging.info("Aucun fichier ZIP trouvé dans le dossier source.")
+            error = 'patch non présent dans le dossier "patch"'
+        else:
+            error = unzip_file(zip_file, gamepath)
 
-        unzip_file(zip_file, gamepath)
-
-        self.signal_apply_patch_end.emit()
+        self.signal_apply_patch_end.emit(error)
 
 
 # -------------------------------------------------------------------#
@@ -78,11 +80,15 @@ class MainWindow(QMainWindow):
         self.ui.pushButton_browse.clicked.connect(self.find_element)
         self.ui.pushButton_process.clicked.connect(self.run_process)
         self.m_worker.signal_apply_patch_end.connect(self.handle_apply_patch_result)
+        self.ui.lineEdit_gamePath.textChanged.connect(self.on_game_path_changed)
 
     def find_steam_game_path(self) -> None:
         gamepath: str | int = steam_game_api.find_game_path(GAME_FOLDER_NAME)
         if isinstance(gamepath, str):
             self.ui.lineEdit_gamePath.setText(gamepath)
+        else:
+            self.ui.pushButton_process.setEnabled(False)
+            debug.logging.info("probleme avec find_game_path, error : " + str(gamepath))
 
     @pyqtSlot()
     def find_element(self) -> None:
@@ -93,6 +99,17 @@ class MainWindow(QMainWindow):
                                                   QDir.currentPath(), QFileDialog.ShowDirsOnly)
         self.ui.lineEdit_gamePath.setText(folder)
         self.ui.label_stateProcess.hide()
+        if len(self.ui.lineEdit_gamePath.text()) == 0 or not os.path.exists(self.ui.lineEdit_gamePath.text()):
+            self.ui.pushButton_process.setEnabled(False)
+        else:
+            self.ui.pushButton_process.setEnabled(True)
+
+    @pyqtSlot(str)
+    def on_game_path_changed(self, new_text: str) -> None:
+        if len(new_text) == 0 or not os.path.exists(new_text):
+            self.ui.pushButton_process.setEnabled(False)
+        else:
+            self.ui.pushButton_process.setEnabled(True)
 
     @pyqtSlot()
     def run_process(self) -> None:
@@ -101,10 +118,14 @@ class MainWindow(QMainWindow):
         self.update_ui(False)
         self.m_worker.signal_apply_patch.emit(self.ui.lineEdit_gamePath.text())
 
-    @pyqtSlot()
-    def handle_apply_patch_result(self) -> None:
-        self.ui.label_stateProcess.setText("patch appliqué !")
+    @pyqtSlot(str)
+    def handle_apply_patch_result(self, error: str) -> None:
+        if error == "":
+            self.ui.label_stateProcess.setText("patch appliqué !")
+        else:
+            self.ui.label_stateProcess.setText(error)
         self.update_ui(True)
+
 
     def update_ui(self, state: bool) -> None:
         self.ui.lineEdit_gamePath.setEnabled(state)
