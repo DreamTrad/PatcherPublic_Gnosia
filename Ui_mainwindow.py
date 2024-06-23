@@ -15,7 +15,9 @@ class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
         MainWindow.setObjectName("MainWindow")
         MainWindow.resize(916, 104)
-        MainWindow.setStyleSheet("")
+        icon = QtGui.QIcon()
+        icon.addPixmap(QtGui.QPixmap(":/ressource/GnosiaIcone.ico"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        MainWindow.setWindowIcon(icon)
         self.centralwidget = QtWidgets.QWidget(MainWindow)
         self.centralwidget.setStyleSheet("")
         self.centralwidget.setObjectName("centralwidget")
@@ -41,8 +43,9 @@ class Ui_MainWindow(object):
 
     def retranslateUi(self, MainWindow):
         _translate = QtCore.QCoreApplication.translate
-        MainWindow.setWindowTitle(_translate("MainWindow", "Team Mirai - GNOSIA patcheur automatique"))
-        self.pushButton_browse.setText(_translate("MainWindow", "rechercher"))
+        MainWindow.setWindowTitle(_translate("MainWindow", "Team Mirai x DreamTeamTrad - Patcheur automatique pour GNOSIA"))
+        self.pushButton_browse.setText(_translate("MainWindow", "Rechercher"))
         self.pushButton_process.setText(_translate("MainWindow", "Patcher"))
+        self.lineEdit_gamePath.setPlaceholderText(_translate("MainWindow", "Indiquer le chemin du dossier du jeu"))
         self.label_stateProcess.setText(_translate("MainWindow", "text current state patch"))
 import ressource_rc

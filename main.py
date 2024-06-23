@@ -7,7 +7,7 @@ from PyQt5.QtWidgets import QApplication
 # -------------------- Import Lib User -------------------
 from mainwindow import MainWindow
 
-# pyinstaller --onefile --name GNOSIA_patch_automatique --icon=./ressource/MiraiTeamLogo.ico main.py
+# pyinstaller --onefile --noconsole --name GNOSIA_patch_automatique --icon=./ressource/GnosiaIcone.ico main.py
 
 # -------------------- Main code -------------------
 if __name__ == "__main__":
