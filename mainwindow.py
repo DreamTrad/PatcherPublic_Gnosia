@@ -2,7 +2,6 @@
 
 import os
 import zipfile
-import shutil
 
 # -------------------- Import Lib Tier -------------------
 from PyQt5.QtWidgets import QMainWindow, QFileDialog
@@ -13,13 +12,8 @@ from Ui_mainwindow import Ui_MainWindow
 from api import steam_game_api
 import debug
 
-PATH_PATCH = "./patch/"
-
-GAME_FOLDER_NAME = "PARANORMASIGHT"
-
-SHAREDASSET = "PARANORMASIGHT_Data/sharedassets0.assets"
-DATA_FOLDER = "PARANORMASIGHT_Data/"
-ASSET_FOLDER = "PARANORMASIGHT_Data/StreamingAssets"
+PATH_PATCH = ".\\patch\\"
+GAME_FOLDER_NAME = "GNOSIA"
 
 
 # -------------------------------------------------------------------#
@@ -56,9 +50,8 @@ class _Worker(QObject):
             debug.logging.info("Aucun fichier ZIP trouvé dans le dossier source.")
             error = 'patch non présent dans le dossier "patch"'
         else:
-            error = unzip_file(zip_file, os.path.join(gamepath, ASSET_FOLDER))
+            error = unzip_file(zip_file, gamepath)
 
-        shutil.copy(os.path.join(PATH_PATCH, SHAREDASSET), os.path.join(gamepath, DATA_FOLDER))
         self.signal_apply_patch_end.emit(error)
 
 
