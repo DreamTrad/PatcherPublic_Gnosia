@@ -11,11 +11,11 @@
    </rect>
   </property>
   <property name="windowTitle">
-   <string>Team Mirai x DreamTeamTrad - Patcheur automatique pour GNOSIA</string>
+   <string>DreamTeamTrad - Patcheur automatique pour beta-test PARANORMASIGHT</string>
   </property>
   <property name="windowIcon">
    <iconset resource="ressource.qrc">
-    <normaloff>:/ressource/GnosiaIcone.ico</normaloff>:/ressource/GnosiaIcone.ico</iconset>
+    <normaloff>:/ressource/DreamteamLogo.ico</normaloff>:/ressource/DreamteamLogo.ico</iconset>
   </property>
   <widget class="QWidget" name="centralwidget">
    <property name="styleSheet">
