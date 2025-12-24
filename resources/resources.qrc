@@ -1,0 +1,6 @@
+<RCC>
+    <qresource prefix="/">
+        <file>dreamtrad-logo.png</file>
+        <file>game-logo.png</file>
+    </qresource>
+</RCC>
