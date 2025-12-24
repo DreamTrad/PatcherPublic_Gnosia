@@ -8,7 +8,7 @@ import pathlib
 # Nom de l’exe généré
 EXE_NAME: str = "TeamMirai-DreamTrad_patcheur_fr_Gnosia.exe"
 # Nom de la fenêtre du logiciel
-NAME_WINDOW: str = "Team Mira x DreamTrad : Patcheur de Gnosia"
+NAME_WINDOW: str = "Team Mirai x DreamTrad : Patcheur de Gnosia"
 
 # Indique si le jeu est une version Steam
 IS_STEAM_GAME: bool = True
