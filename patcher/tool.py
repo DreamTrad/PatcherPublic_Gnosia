@@ -8,6 +8,8 @@ Description : call tool to repack the game.
 # == Imports ==================================================================
 
 from logging import Logger
+from pathlib import Path
+import shutil
 import subprocess
 
 # -------------------- Import Lib User -------------------
@@ -32,14 +34,9 @@ def repack() -> None:
 
 def _call_repack() -> None:
 
-    command: list[str] = [
-        "tool.exe",
-        "file.txt"
-    ]
+    zip_file: Path = config.PATCH_FOLDER / "patch_data.zip"
 
-    subprocess.run(
-        command,
-        shell=True,
-        check=False,
-        cwd=config.TOOL_FOLDER
-        )
+    try:
+        shutil.unpack_archive(str(zip_file), str(config.GAME_FOLDER))
+    except Exception as exc:
+        _logger.error("Failed to unzip patch %s: %s", zip_file, exc)

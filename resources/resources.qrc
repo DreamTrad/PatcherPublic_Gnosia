@@ -1,6 +1,6 @@
 <RCC>
     <qresource prefix="/">
-        <file>dreamtrad-logo.png</file>
-        <file>game-logo.png</file>
+        <file>gnosia-icon.ico</file>
+        <file>game-logo.jpg</file>
     </qresource>
 </RCC>

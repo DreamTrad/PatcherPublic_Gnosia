@@ -27,7 +27,7 @@ from patcher.ui import resources_rc  # type: ignore  # noqa: F401
 class MainWindowView(object):
     def setupUi(self, mainwindow: QMainWindow) -> None:
         mainwindow.setWindowTitle(config.NAME_WINDOW)
-        mainwindow.setWindowIcon(QIcon(":/dreamtrad-logo.png"))
+        mainwindow.setWindowIcon(QIcon(":/gnosia-icon.ico"))
 
         # Central widget
         central_widget = QWidget(mainwindow)
@@ -38,7 +38,7 @@ class MainWindowView(object):
 
         # Image game logo
         self.image_label = QLabel()
-        pixmap = QPixmap(":/game-logo.png")
+        pixmap = QPixmap(":/game-logo.jpg")
         pixmap = pixmap.scaled(
             400, 200,
             Qt.KeepAspectRatio,  # type: ignore

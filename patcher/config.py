@@ -6,14 +6,14 @@ import pathlib
 # == INFORMATIONS GÉNÉRALES ===================================================
 
 # Nom de l’exe généré
-EXE_NAME: str = "DreamTrad_patcheur_fr_.exe"
+EXE_NAME: str = "TeamMirai-DreamTrad_patcheur_fr_Gnosia.exe"
 # Nom de la fenêtre du logiciel
-NAME_WINDOW: str = "DreamTrad : Patcheur de "
+NAME_WINDOW: str = "Team Mira x DreamTrad : Patcheur de Gnosia"
 
 # Indique si le jeu est une version Steam
 IS_STEAM_GAME: bool = True
 # Nom du dossier du jeu dans Steam (utilisé uniquement si IS_STEAM_GAME = True)
-STEAM_FOLDER: str = ""
+STEAM_FOLDER: str = "GNOSIA"
 
 
 # == OUTILS / ENVIRONNEMENT ===================================================
