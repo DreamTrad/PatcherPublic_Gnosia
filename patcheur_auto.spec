@@ -70,5 +70,5 @@ exe = EXE(
     target_arch=None,
     codesign_identity=None,
     entitlements_file=None,
-    icon="resources/dreamtrad-logo.png",
+    icon="resources/gnosia-icon.ico",
 )
