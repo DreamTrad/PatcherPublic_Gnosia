@@ -7,20 +7,17 @@ Description : Model for the main window of the application.
 
 # == Imports ==================================================================
 
-from logging import Logger
 import os
+from logging import Logger
 
 # -------------------- Import Lib Tier -------------------
-
-from PySide6.QtCore import QThread, QObject, Signal
+from PySide6.QtCore import QObject, QThread, Signal
 
 # -------------------- Import Lib User -------------------
-
 from patcher import config
 from patcher.tool import repack
-from patcher.utils.logger import get_logger
 from patcher.utils import steam
-
+from patcher.utils.logger import get_logger
 
 # == Global Variables =========================================================
 
@@ -29,8 +26,8 @@ _logger: Logger = get_logger(__name__)
 
 # == Classes ==================================================================
 
-class MainWindowModel(QObject):
 
+class MainWindowModel(QObject):
     signal_process_started = Signal()
     signal_process_finished = Signal()
     signal_update_progress = Signal(str)

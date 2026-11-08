@@ -9,15 +9,20 @@ Description : functions to access steam game folders
 
 # == Imports ==================================================================
 
+import os
+import shutil
+import sys
 from logging import Logger
 from pathlib import Path
-import shutil
-import winreg
+
+try:
+    import winreg
+except ImportError:
+    winreg = None
 
 # -------------------- Import Lib User -------------------
 
 from patcher.utils.logger import get_logger
-
 
 # == Global Variables =========================================================
 
@@ -26,21 +31,43 @@ _logger: Logger = get_logger(__name__)
 
 # == Functions ================================================================
 
+
 def find_steam_folder_path() -> str | None:
-    """Find where Steam is installed on Windows.
+    """Find where Steam is installed.
 
     Returns:
         str: path of steam, or None if error
     """
-    KEY_PATH_STEAM = r"SOFTWARE\\Valve\\Steam"
-    KEY_NAME = "SteamPath"
-    try:
-        with winreg.OpenKey(winreg.HKEY_CURRENT_USER, KEY_PATH_STEAM, 0, winreg.KEY_READ) as key:
-            return winreg.QueryValueEx(key, KEY_NAME)[0]
-    except FileNotFoundError:
-        _logger.error("Steam registry key not found.")
-    except Exception as e:
-        _logger.exception("Error reading Steam path from registry: %s", e)
+    # Windows
+    if sys.platform == "win32" and winreg is not None:
+        KEY_PATH_STEAM = r"SOFTWARE\\Valve\\Steam"
+        KEY_NAME = "SteamPath"
+        try:
+            with winreg.OpenKey(
+                winreg.HKEY_CURRENT_USER, KEY_PATH_STEAM, 0, winreg.KEY_READ
+            ) as key:
+                return winreg.QueryValueEx(key, KEY_NAME)[0]
+        except FileNotFoundError:
+            _logger.error("Steam registry key not found.")
+        except Exception:
+            _logger.exception("Error reading Steam path from registry")
+        return None
+
+    # Linux
+    home = Path.home()
+    data_home = Path(os.environ.get("XDG_DATA_HOME", home / ".local/share"))
+    candidates = [
+        Path(os.environ["STEAM_DIR"]) if os.environ.get("STEAM_DIR") else None,
+        home / ".steam/steam",
+        home / ".steam/root",
+        data_home / "Steam",
+        home / ".var/app/com.valvesoftware.Steam/.local/share/Steam",
+    ]
+    for candidate in candidates:
+        if candidate is not None and (candidate / "steamapps").is_dir():
+            return str(candidate)
+
+    _logger.error("Steam installation path not found.")
     return None
 
 
@@ -50,6 +77,7 @@ def find_steam_library_folders_path() -> list[str] | None:
     Returns:
         list[str] | None: list with every library folder, or None if not found.
     """
+
     def extract_path_in_textline(line: str) -> str | None:
         """Extract library path from a line in libraryfolders.vdf."""
         if '"path"' not in line:
@@ -70,15 +98,15 @@ def find_steam_library_folders_path() -> list[str] | None:
         _logger.error("libraryfolders.vdf not found at %s", vdf_path)
         return None
 
-    game_folders: list[str] = []
+    game_folders: list[str] = [steam_folder]
     try:
         with vdf_path.open(encoding="utf-8") as file:
             for line in file:
                 path_library: str | None = extract_path_in_textline(line)
                 if path_library:
                     game_folders.append(path_library)
-    except Exception as e:
-        _logger.exception("Error while parsing libraryfolders.vdf: %s", e)
+    except Exception:
+        _logger.exception("Error while parsing libraryfolders.vdf")
         return None
 
     return game_folders or None
@@ -110,9 +138,7 @@ def find_gamepath(game_folder_name: str) -> str | None:
 
 
 def copy_data_in_steam_game_folder(
-    game_folder_name: str,
-    data_to_copy: str | Path,
-    overwrite: bool = True
+    game_folder_name: str, data_to_copy: str | Path, overwrite: bool = True
 ) -> bool:
     """Copy a file or folder into a Steam game folder.
 
@@ -155,16 +181,13 @@ def copy_data_in_steam_game_folder(
                         shutil.copy(src_path, dest_path)
                         _logger.info("Copied file %s to %s", src_path, dest_path)
         return True
-    except Exception as e:
-        _logger.exception("Error copying data to game folder: %s", e)
+    except Exception:
+        _logger.exception("Error copying data to game folder")
         return False
 
 
 def copy_data_from_steam_game_folder(
-    game_folder_name: str,
-    dest: str | Path,
-    data_to_copy: str,
-    overwrite: bool = True
+    game_folder_name: str, dest: str | Path, data_to_copy: str, overwrite: bool = True
 ) -> bool:
     """Copy file or folder from a Steam game folder to a destination folder.
 
@@ -212,6 +235,6 @@ def copy_data_from_steam_game_folder(
                         shutil.copy(src_item, dest_item)
                         _logger.info("Copied file %s to %s", src_item, dest_item)
         return True
-    except Exception as e:
-        _logger.exception("Error copying data from game folder: %s", e)
+    except Exception:
+        _logger.exception("Error copying data from game folder")
         return False

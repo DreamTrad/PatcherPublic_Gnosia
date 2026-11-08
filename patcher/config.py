@@ -2,11 +2,8 @@
 
 import pathlib
 
-
 # == INFORMATIONS GÉNÉRALES ===================================================
 
-# Nom de l’exe généré
-EXE_NAME: str = "TeamMirai-DreamTrad_patcheur_fr_Gnosia.exe"
 # Nom de la fenêtre du logiciel
 NAME_WINDOW: str = "Team Mirai x DreamTrad : Patcheur de Gnosia"
 

@@ -1,25 +1,33 @@
-# PatcherTeam_template
+# PatcherPublic_template
 Template duquel partir pour faire un patcheur auto public pour une sortie de patch
 
 Créez un environnement virtuel
 
-    py -m venv venv
+    python -m venv .venv
 
 (powershell)
 
-    venv\Scripts\Activate.ps1
+    .venv\Scripts\Activate.ps1
+ 
+(linux)
+
+    source .venv/bin/activate
 
 Installer les dépendances
 
     pip install -r requirements.txt
 
+S’il vous faut des dépendances en plus, pip install la dépendance dans le venv puis :
+
+    pip freeze > requirements.txt
+
 Mettez le logo du jeu dans resources au nom `game-logo.png` et lancez la ligne suivante pour compiler les ressources.
 
-    pyside6-rcc resources\resources.qrc -o patcher\ui\resources_rc.py
+    pyside6-rcc resources/resources.qrc -o patcher/ui/resources_rc.py
 
 Pour run
 
-    py -m patcher.main
+    python -m patcher.main
 
 Pour build
 
@@ -38,7 +46,3 @@ C’est ici que les paramètres spécifiques au projet. Il faut y renseigner les
 ## tool.py
 
 C’est ici que sont faite les commande des outils cmd pour repack le jeu.
-
-#
-
-Si vous avez des propositions pour améliorer le template, n’hésitez pas.

@@ -13,12 +13,10 @@ import sys
 
 from PySide6.QtWidgets import QApplication
 
-
 # == Main Application =========================================================
 
 
 if __name__ == "__main__":
-
     app = QApplication(sys.argv)
 
     from patcher.ui.mainwindow.mainwindow_controller import MainWindowController

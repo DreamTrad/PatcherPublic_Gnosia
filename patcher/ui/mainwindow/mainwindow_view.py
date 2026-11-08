@@ -12,19 +12,25 @@ Description : View of the main window
 from PySide6.QtCore import Qt
 from PySide6.QtGui import QIcon, QPixmap
 from PySide6.QtWidgets import (
-    QMainWindow, QWidget, QLineEdit, QPushButton, QLabel, QSpacerItem,
-    QVBoxLayout, QHBoxLayout,
-    QSizePolicy
+    QHBoxLayout,
+    QLabel,
+    QLineEdit,
+    QMainWindow,
+    QPushButton,
+    QSizePolicy,
+    QSpacerItem,
+    QVBoxLayout,
+    QWidget,
 )
 
 # -------------------- Import Lib User -------------------
 from patcher import config
 from patcher.ui import resources_rc  # type: ignore  # noqa: F401
 
-
 # == Classes ==================================================================
 
-class MainWindowView(object):
+
+class MainWindowView:
     def setupUi(self, mainwindow: QMainWindow) -> None:
         mainwindow.setWindowTitle(config.NAME_WINDOW)
         mainwindow.setWindowIcon(QIcon(":/gnosia-icon.ico"))
@@ -40,12 +46,13 @@ class MainWindowView(object):
         self.image_label = QLabel()
         pixmap = QPixmap(":/game-logo.jpg")
         pixmap = pixmap.scaled(
-            400, 200,
-            Qt.KeepAspectRatio,  # type: ignore
-            Qt.SmoothTransformation  # type: ignore
+            400,
+            200,
+            Qt.AspectRatioMode.KeepAspectRatio,
+            Qt.TransformationMode.SmoothTransformation,
         )
         self.image_label.setPixmap(pixmap)
-        self.image_label.setAlignment(Qt.AlignCenter)  # type: ignore
+        self.image_label.setAlignment(Qt.AlignmentFlag.AlignCenter)
         main_layout.addWidget(self.image_label)
 
         # LineEdit with button
@@ -58,12 +65,16 @@ class MainWindowView(object):
         main_layout.addLayout(line_layout)
 
         process_layout = QHBoxLayout()
-        self.spacer_process_1 = QSpacerItem(1, 1, QSizePolicy.Expanding, QSizePolicy.Minimum)  # type: ignore
+        self.spacer_process_1 = QSpacerItem(
+            1, 1, QSizePolicy.Policy.Expanding, QSizePolicy.Policy.Minimum
+        )
         self.button_process = QPushButton("Patcher")
         self.progress_label = QLabel("")
-        self.progress_label.setAlignment(Qt.AlignRight | Qt.AlignVCenter)  # type: ignore
+        self.progress_label.setAlignment(Qt.AlignmentFlag.AlignRight | Qt.AlignmentFlag.AlignVCenter)
         self.progress_label.setFixedWidth(130)
-        self.spacer_process_2 = QSpacerItem(1, 1, QSizePolicy.Expanding, QSizePolicy.Minimum)  # type: ignore
+        self.spacer_process_2 = QSpacerItem(
+            1, 1, QSizePolicy.Policy.Expanding, QSizePolicy.Policy.Minimum
+        )
         process_layout.addItem(self.spacer_process_1)
         process_layout.addWidget(self.button_process)
         process_layout.addWidget(self.progress_label)

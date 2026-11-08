@@ -19,7 +19,6 @@ import logging
 import os
 from logging.handlers import RotatingFileHandler
 
-
 # == Constants ================================================================
 
 LOG_FOLDER = "logs"
@@ -33,6 +32,7 @@ os.makedirs(LOG_FOLDER, exist_ok=True)
 
 
 # == Functions ================================================================
+
 
 def get_logger(name: str) -> logging.Logger:
     """Get a configured logger for the specified module name.
@@ -51,17 +51,19 @@ def get_logger(name: str) -> logging.Logger:
             filename=os.path.join(LOG_FOLDER, f"{LOGFILE_NAME}.log"),
             maxBytes=MAX_LOG_SIZE,
             backupCount=BACKUP_COUNT,
-            encoding="utf-8"
+            encoding="utf-8",
         )
-        file_handler.setFormatter(logging.Formatter(
-            "%(asctime)s %(levelname)s %(filename)s:%(lineno)d: %(message)s"
-        ))
+        file_handler.setFormatter(
+            logging.Formatter(
+                "%(asctime)s %(levelname)s %(filename)s:%(lineno)d: %(message)s"
+            )
+        )
 
         # Console handler
         console_handler = logging.StreamHandler()
-        console_handler.setFormatter(logging.Formatter(
-            "[%(levelname)s] %(filename)s:%(lineno)d: %(message)s"
-        ))
+        console_handler.setFormatter(
+            logging.Formatter("[%(levelname)s] %(filename)s:%(lineno)d: %(message)s")
+        )
 
         logger.addHandler(file_handler)
         logger.addHandler(console_handler)

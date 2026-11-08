@@ -9,24 +9,29 @@ Description : functions to access to use xdelta
 
 # == Imports ==================================================================
 
-from logging import Logger
 import os
 import subprocess
+import sys
+from logging import Logger
 
 # -------------------- Import Lib User -------------------
-
-from patcher.utils.logger import get_logger
 from patcher.config import TOOL_FOLDER
-
+from patcher.utils.logger import get_logger
 
 # == Global Variables =========================================================
 
 _logger: Logger = get_logger(__name__)
-XDELTA_EXE = "xdelta3.exe"
+XDELTA_EXE = "xdelta3"
+CREATION_FLAG = 0
+if sys.platform == "win32":
+    XDELTA_EXE = "xdelta3.exe"
+    CREATION_FLAG = subprocess.CREATE_NO_WINDOW
+
 XDELTA_PATH = os.path.join(TOOL_FOLDER, XDELTA_EXE)
 
 
 # == Functions ================================================================
+
 
 def apply_xdelta_patch(
     target_file: str,
@@ -60,8 +65,8 @@ def apply_xdelta_patch(
 
     command = [
         XDELTA_PATH,
-        "-d",          # decode
-        "-f",          # force overwrite
+        "-d",  # decode
+        "-f",  # force overwrite
         "-s",
         target_file,
         patch_file,
@@ -70,9 +75,8 @@ def apply_xdelta_patch(
 
     process = subprocess.run(
         command,
-        stdout=subprocess.PIPE,
-        stderr=subprocess.PIPE,
-        creationflags=subprocess.CREATE_NO_WINDOW,
+        capture_output=True,
+        creationflags=CREATION_FLAG,
         check=False,
     )
 
